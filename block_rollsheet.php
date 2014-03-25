@@ -4,6 +4,10 @@ class block_rollsheet extends block_list {
         $this->title = get_string('pluginname', 'block_rollsheet');
     }
 
+    function applicable_formats() {
+        return array('site' => false, 'my' => false, 'course-view' => true);
+    }
+
     function has_config() {
         return true;
     }
