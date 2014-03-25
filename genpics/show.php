@@ -55,7 +55,7 @@ else if($renderType == 'group'){
 	$PAGE->navbar->add(get_string('showbygroup', 'block_rollsheet'));
 }
 
-$PAGE->set_url('/blocks/rollsheet/showrollsheet/show.php');
+$PAGE->set_url('/blocks/rollsheet/genpics/show.php');
 $PAGE->set_context($context);
 $PAGE->set_heading(get_string('pluginname', 'block_rollsheet'));
 $PAGE->set_title(get_string('pluginname', 'block_rollsheet'));
