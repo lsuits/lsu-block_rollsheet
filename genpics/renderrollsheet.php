@@ -40,25 +40,24 @@ function renderPicSheet(){
 
         if($groupName) {
                 $query = "SELECT u.id, u.idnumber, $mainuserfields
-                                FROM {course} AS c
-                                INNER JOIN {context} AS cx ON c.id = cx.instanceid AND cx.contextlevel = $ctxlevel
-                                INNER JOIN {role_assignments} AS ra ON cx.id = ra.contextid
-                                INNER JOIN {role} AS r ON ra.roleid = r.id
-                                INNER JOIN {user} AS u ON ra.userid = u.id
-                                INNER JOIN {groups_members} AS gm ON u.id = gm.userid
-                                INNER JOIN {groups} AS g ON gm.groupid = g.id AND c.id = g.courseid
+                                FROM {course} c
+                                INNER JOIN {context} cx ON c.id = cx.instanceid AND cx.contextlevel = $ctxlevel
+                                INNER JOIN {role_assignments} ra ON cx.id = ra.contextid
+                                INNER JOIN {role} r ON ra.roleid = r.id
+                                INNER JOIN {user} u ON ra.userid = u.id
+                                INNER JOIN {groups_members} gm ON u.id = gm.userid
+                                INNER JOIN {groups} g ON gm.groupid = g.id AND c.id = g.courseid
                                 WHERE r.shortname = $student AND gm.groupid = ?" . $appendOrder;
                 $result = $DB->get_records_sql($query,array($selectedGroupId));
-print_r($query) and die;
         } else if (!has_capability('moodle/site:accessallgroups', $context)) {
                 $query = "SELECT CONCAT(u.id, g.id) AS groupuserid, u.id, u.idnumber, $mainuserfields
-                                FROM {course} AS c
-                                INNER JOIN {context} AS cx ON c.id = cx.instanceid AND cx.contextlevel = $ctxlevel
-                                INNER JOIN {role_assignments} AS ra ON cx.id = ra.contextid
-                                INNER JOIN {role} AS r ON ra.roleid = r.id
-                                INNER JOIN {user} AS u ON ra.userid = u.id
-                                INNER JOIN {groups_members} AS gm ON u.id = gm.userid
-                                INNER JOIN {groups} AS g ON gm.groupid = g.id AND c.id = g.courseid
+                                FROM {course} c
+                                INNER JOIN {context} cx ON c.id = cx.instanceid AND cx.contextlevel = $ctxlevel
+                                INNER JOIN {role_assignments} ra ON cx.id = ra.contextid
+                                INNER JOIN {role} r ON ra.roleid = r.id
+                                INNER JOIN {user} u ON ra.userid = u.id
+                                INNER JOIN {groups_members} gm ON u.id = gm.userid
+                                INNER JOIN {groups} g ON gm.groupid = g.id AND c.id = g.courseid
                                 WHERE r.shortname = $student AND gm.groupid IN ($groupids) " . $appendOrder;
                 $result = $DB->get_records_sql($query, array($cid));
         } else {
