@@ -103,6 +103,7 @@
 }
 
 .path-blocks-rollsheet div.floatleft {
+  transition: box-shadow 150ms, background-color 150ms, border-color 150ms;
   display: inline-block;
   padding: 0;
   margin: 5px;
@@ -118,8 +119,16 @@
 }
 
 .path-blocks-rollsheet div.floatleft:hover {
+  transition: box-shadow 150ms, background-color 150ms, border-color 150ms;
   box-shadow: 0 0 15px #ccc;
   -webkit-box-shadow: 0 0 15px #ccc;
+  background-color: #f6f6f6;
+  border-color: #999;
+}
+
+.path-blocks-rollsheet div.floatleft:active {
+  box-shadow: 0 0 15px #666;
+  -webkit-box-shadow: 0 0 15px #666;
   background-color: #f6f6f6;
   border-color: #999;
 }
